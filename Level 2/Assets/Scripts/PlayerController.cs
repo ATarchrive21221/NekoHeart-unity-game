@@ -34,26 +34,39 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
         }
 
-        Run();
+        MovementUpdates();
 
     }
 
-    void Run()
+    void MovementUpdates()
     {
+        MovementState state;
+
         if (dirX > 0f)
         {
-            anim.SetBool("running", true);
+            state = MovementState.running;
             sprite.flipX = false;
         }
         else if (dirX < 0f)
         {
-            anim.SetBool("running", true);
+            state = MovementState.running;
             sprite.flipX = true;
         }
         else
         {
-            anim.SetBool("running", false);
+            state = MovementState.idle;
         }
+
+        if (rb.velocity.y > 0.1f)
+        {
+            state = MovementState.jumping;
+        }
+        else if (rb.velocity.y < -0.1f)
+        {
+            state = MovementState.falling;
+        }
+
+        anim.SetInteger("state", (int)state);
     }
 
 }
