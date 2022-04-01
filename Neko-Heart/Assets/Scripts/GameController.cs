@@ -14,13 +14,17 @@ public class GameController : MonoBehaviour
 
     private float currentTime;
     private bool stopTimer;
+    private bool winGame;
+    private bool loseGame;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject playerControllerObj = GameObject.Find("PlayerController");
-        playerController = playerControllerObj.GetComponent<PlayerController>();
-        totalScore = playerController.GetScore();
+        timerText.text = "Timer: ";
+        totalScore = FindObjectOfType<PlayerController>().GetScore();
+
+        currentTime = 45;
+        stopTimer = false;
 
         UpdateTimerText();
     }
@@ -28,11 +32,34 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currentTime = currentTime - Time.deltaTime;
+
+        // the game will run until timer hits 0
+        if (currentTime <= 0)
+        {
+            stopTimer = true;
+        }
+
+        UpdateTimerText();
+
+    }
+
+    void WinGame()
+    {
+
+    }
+
+    void LoseGame()
+    {
+
     }
 
     void UpdateTimerText()
     {
-        timerText.text = "Timer: ";
+        if (!stopTimer)
+        {
+            timerText.text = "Timer: " + ((int)currentTime).ToString();
+        }
+        
     }
 }
