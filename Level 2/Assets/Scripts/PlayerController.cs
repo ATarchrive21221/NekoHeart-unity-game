@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float jumpforce = 5;
     private float dirX = 0;
 
+    private enum MovementState {idle, running, jumping, falling};
+
     // Start is called before the first frame update
     void Start()
     {

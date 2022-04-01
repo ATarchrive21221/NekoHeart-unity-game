@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -147,6 +148,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfbe4cedddae894cb8e59fd113377b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1821495281}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1312,6 +1326,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2911854, y: 1.9055462}
   m_EdgeRadius: 0
+--- !u!4 &1821495281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6898228348371853955, guid: e8de4bf636f70664eb74e74568326917,
+    type: 3}
+  m_PrefabInstance: {fileID: 6898228346567142767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6898228346567142767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1319,6 +1339,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1821495275, guid: e8de4bf636f70664eb74e74568326917, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6898228348371853952, guid: e8de4bf636f70664eb74e74568326917,
         type: 3}
       propertyPath: m_Size.x
