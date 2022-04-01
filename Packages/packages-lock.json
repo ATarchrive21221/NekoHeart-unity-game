@@ -55,7 +55,7 @@
       "dependencies": {}
     },
     "com.unity.2d.spriteshape": {
-      "version": "3.0.17",
+      "version": "3.0.18",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -72,7 +72,7 @@
       "dependencies": {}
     },
     "com.unity.collab-proxy": {
-      "version": "1.14.4",
+      "version": "1.14.9",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
