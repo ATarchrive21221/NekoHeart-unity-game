@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 809544997}
   - component: {fileID: 809544996}
   - component: {fileID: 809544995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1311,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.09028816, y: -0.23222685}
   m_SpriteTilingProperty:
@@ -1326,6 +1326,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2911854, y: 1.9055462}
   m_EdgeRadius: 0
+--- !u!251 &1821495276
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821495274}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!4 &1821495281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6898228348371853955, guid: e8de4bf636f70664eb74e74568326917,
@@ -1342,6 +1361,10 @@ PrefabInstance:
     - target: {fileID: 1821495275, guid: e8de4bf636f70664eb74e74568326917, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821495275, guid: e8de4bf636f70664eb74e74568326917, type: 3}
+      propertyPath: ground.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 6898228348371853952, guid: e8de4bf636f70664eb74e74568326917,
         type: 3}
@@ -1367,6 +1390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898228348371853953, guid: e8de4bf636f70664eb74e74568326917,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6898228348371853955, guid: e8de4bf636f70664eb74e74568326917,
         type: 3}
