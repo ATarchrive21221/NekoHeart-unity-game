@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FruiteController : MonoBehaviour
 {
-    public int score = 10;
+    public int score = 0;
 
     // Start is called before the first frame update
     void Start()
