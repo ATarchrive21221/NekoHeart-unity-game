@@ -122,6 +122,11 @@ public class PlayerController : MonoBehaviour
         UpdateScoreText();
     }
 
+    public int GetScore()
+    {
+        return totalScore;
+    }
+
     private void UpdateScoreText()
     {
         scoreText.text = "Score: " + totalScore.ToString();
