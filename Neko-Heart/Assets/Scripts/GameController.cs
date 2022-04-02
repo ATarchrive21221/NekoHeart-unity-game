@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
         timerText.text = "Timer: ";
         totalScore = FindObjectOfType<PlayerController>().GetScore();
 
-        currentTime = 45;
+        currentTime = 30;
         stopTimer = false;
         loseGame = false;
         winGame = false;
@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
             loseGame = true;
         }
 
-        if (bananas >= 9 && apples >= 10 && !loseGame)
+        if (totalScore >= 250 && !loseGame)
         {
             stopTimer = true;
             winGame = true;
