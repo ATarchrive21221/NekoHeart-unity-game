@@ -5,11 +5,15 @@ using UnityEngine;
 public class FruiteController : MonoBehaviour
 {
     public int score = 0;
+    public AudioSource pickupSound;
+    private int apples = 0; // 10 apples
+    private int bananas = 0; // 9 bananas
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        pickupSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,7 +24,29 @@ public class FruiteController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        pickupSound.Play();
+        if (gameObject.tag == "Apple")
+        {
+            apples++;
+            FindObjectOfType<GameController>().AddApples(this.apples);
+        }
+        if (gameObject.tag == "Banana")
+        {
+            bananas++;
+            FindObjectOfType<GameController>().AddBananas(this.bananas);
+        }
         FindObjectOfType<PlayerController>().AddScore(this.score);
+
         Destroy(this.gameObject);
+    }
+
+    public int getApples()
+    {
+        return apples;
+    }
+
+    public int getBananas()
+    {
+        return bananas;
     }
 }

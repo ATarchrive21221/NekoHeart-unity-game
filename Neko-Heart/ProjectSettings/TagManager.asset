@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Fruit
   - Door
+  - Apple
+  - Banana
   layers:
   - Default
   - TransparentFX
