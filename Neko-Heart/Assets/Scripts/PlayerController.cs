@@ -56,6 +56,13 @@ public class PlayerController : MonoBehaviour
         {
             GotoLevel2();
         }
+
+        if (collision.tag == "Trap")
+        {
+            Debug.Log("Dead, retry");
+            totalScore = 0;
+            Restart();
+        }
     }
 
 

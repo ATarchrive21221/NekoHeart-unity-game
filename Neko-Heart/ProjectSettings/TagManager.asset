@@ -10,6 +10,10 @@ TagManager:
   - Door
   - Apple
   - Banana
+  - Trap
+  - Door7
+  - Boss
+  - FireBall
   layers:
   - Default
   - TransparentFX
