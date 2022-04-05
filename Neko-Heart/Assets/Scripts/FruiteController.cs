@@ -24,7 +24,7 @@ public class FruiteController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        pickupSound.Play();
+        
         if (gameObject.tag == "Apple")
         {
             apples++;
@@ -38,6 +38,8 @@ public class FruiteController : MonoBehaviour
         FindObjectOfType<PlayerController>().AddScore(this.score);
 
         Destroy(this.gameObject);
+
+        pickupSound.Play();
     }
 
     public int getApples()

@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
         loseGame = false;
         winGame = false;
 
-        tigerBalm.SetActive(false);
+        // tigerBalm.SetActive(false);
 
         UpdateTimerText();
         messageText.text = "";
