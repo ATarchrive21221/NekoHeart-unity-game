@@ -54,7 +54,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Door")
         {
+            totalScore = 0;
             GotoLevel2();
+            
         }
 
         if (collision.tag == "Trap")
