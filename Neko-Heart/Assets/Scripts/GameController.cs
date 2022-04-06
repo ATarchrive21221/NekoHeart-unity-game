@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public Text timerText;
     public Text messageText;
     public Text fruitText;
+    public Text instructionText;
 
     private float currentTime;
     private bool stopTimer;
@@ -37,6 +38,12 @@ public class GameController : MonoBehaviour
     void Update()
     {
         currentTime = currentTime - Time.deltaTime;
+
+        // instructions disappear after 8 seconds
+        if (currentTime <= 22)
+        {
+            instructionText.text = "";
+        }
 
         // the game will run until timer hits 0
         if (currentTime <= 0 && !winGame)
