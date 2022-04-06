@@ -7,11 +7,9 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
-    public GameObject tigerBalm;
-
     public Text timerText;
     public Text messageText;
-    private int totalScore;
+    public Text fruitText;
 
     private float currentTime;
     private bool stopTimer;
@@ -23,17 +21,15 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timerText.text = "Timer: ";
         totalFruit = FindObjectOfType<PlayerController>().GetFruit();
 
-        currentTime = 20;
+        currentTime = 30;
         stopTimer = false;
         loseGame = false;
         winGame = false;
 
-        // tigerBalm.SetActive(false);
-
         UpdateTimerText();
+        UpdateFruitText();
         messageText.text = "";
     }
 
@@ -49,7 +45,7 @@ public class GameController : MonoBehaviour
             loseGame = true;
         }
 
-        if (totalFruit >= 15 && !loseGame)
+        if (totalFruit >= 20 && !loseGame)
         {
             stopTimer = true;
             winGame = true;
@@ -66,6 +62,7 @@ public class GameController : MonoBehaviour
 
         UpdateTimerText();
         totalFruit = FindObjectOfType<PlayerController>().GetFruit();
+        UpdateFruitText();
     }
 
     void WinGame()
@@ -89,12 +86,17 @@ public class GameController : MonoBehaviour
         }
     }
 
-void UpdateTimerText()
+    void UpdateTimerText()
     {
         if (!stopTimer)
         {
             timerText.text = "Timer: " + ((int)currentTime).ToString();
         }
         
+    }
+
+    void UpdateFruitText()
+    {
+        fruitText.text = "Fruits: " + totalFruit;
     }
 }
