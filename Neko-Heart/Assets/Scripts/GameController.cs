@@ -60,6 +60,7 @@ public class GameController : MonoBehaviour
             stopTimer = true;
             winGame = true;
         }
+        
 
         if (loseGame)
         {
