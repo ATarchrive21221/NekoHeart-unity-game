@@ -17,6 +17,9 @@ public class GameController : MonoBehaviour
     private bool winGame;
     private bool loseGame;
 
+    float timerWait = 6;
+    bool timerReached = false;
+
     private int totalFruit;
 
     // Start is called before the first frame update
@@ -74,8 +77,22 @@ public class GameController : MonoBehaviour
 
     void WinGame()
     {
-        FindObjectOfType<PlayerController>().SetFruitToZero();
-        FindObjectOfType<PlayerController>().GotoLevel2();
+        if (!timerReached)
+        {
+            timerWait -= Time.deltaTime;
+            messageText.text = "You Win! :3" +
+                "\nTeleport to the next room in " + ((int)timerWait).ToString() + " seconds.";
+        }
+
+        if (!timerReached && timerWait <= 0)
+        {
+            messageText.text = "";
+            timerWait = 0;
+            FindObjectOfType<PlayerController>().SetFruitToZero();
+            timerReached = false;
+            FindObjectOfType<PlayerController>().GotoLevel2();
+        }
+            
     }
 
     void LoseGame()
@@ -87,10 +104,12 @@ public class GameController : MonoBehaviour
 
     void RestartGame()
     {
+        FindObjectOfType<PlayerController>().SetFruitToZero();
+
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+            FindObjectOfType<PlayerController>().Restart();
+        }  
     }
 
     void UpdateTimerText()

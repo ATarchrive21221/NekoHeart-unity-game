@@ -25,6 +25,5 @@ public class FruiteController : MonoBehaviour
 
         Destroy(this.gameObject);
 
-        pickupSound.Play();
     }
 }
