@@ -18,16 +18,15 @@ public class GameController : MonoBehaviour
     private bool winGame;
     private bool loseGame;
 
-    private static int apples = 0;
-    private static int bananas = 0;
+    private int totalFruit;
 
     // Start is called before the first frame update
     void Start()
     {
         timerText.text = "Timer: ";
-        totalScore = FindObjectOfType<PlayerController>().GetScore();
+        totalFruit = FindObjectOfType<PlayerController>().GetFruit();
 
-        currentTime = 30;
+        currentTime = 20;
         stopTimer = false;
         loseGame = false;
         winGame = false;
@@ -50,7 +49,7 @@ public class GameController : MonoBehaviour
             loseGame = true;
         }
 
-        if (totalScore >= 250 && !loseGame)
+        if (totalFruit >= 15 && !loseGame)
         {
             stopTimer = true;
             winGame = true;
@@ -65,18 +64,14 @@ public class GameController : MonoBehaviour
             WinGame();
         }
 
-        totalScore = FindObjectOfType<PlayerController>().GetScore();
         UpdateTimerText();
-
+        totalFruit = FindObjectOfType<PlayerController>().GetFruit();
     }
 
     void WinGame()
     {
-        messageText.text = "You Win This Round!" +
-            "\nGo collect the tiger balm on the ground to go to the next round!";
-
-        tigerBalm.SetActive(true);
-
+        FindObjectOfType<PlayerController>().SetFruitToZero();
+        FindObjectOfType<PlayerController>().GotoLevel2();
     }
 
     void LoseGame()
@@ -92,16 +87,6 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    }
-    
-    public void AddBananas(int bananasIn) 
-    {
-        bananas += bananasIn;
-    }
-
-    public void AddApples(int applesIn)
-    {
-        apples += applesIn;
     }
 
 void UpdateTimerText()

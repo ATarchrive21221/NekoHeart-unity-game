@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     int jumpCount = 2;
 
     private static int totalScore = 0;
+    private static int fruit = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -54,9 +55,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Door")
         {
-            totalScore = 0;
+            SetFruitToZero();
             GotoLevel2();
-            
         }
 
         if (collision.tag == "Trap")
@@ -64,6 +64,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Dead, retry");
             totalScore = 0;
             Restart();
+        }
+
+        if (collision.tag == "Fruit")
+        {
+            fruit++;
         }
     }
 
@@ -73,7 +78,7 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void GotoLevel2()
+    public void GotoLevel2()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -131,13 +136,18 @@ public class PlayerController : MonoBehaviour
         UpdateScoreText();
     }
 
-    public int GetScore()
-    {
-        return totalScore;
-    }
-
     private void UpdateScoreText()
     {
         scoreText.text = "Score: " + totalScore.ToString();
+    }
+
+    public int GetFruit()
+    {
+        return fruit;
+    }
+
+    public void SetFruitToZero()
+    {
+        fruit = 0;
     }
 }
