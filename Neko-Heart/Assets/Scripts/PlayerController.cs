@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     private static int totalScore = 0;
     private static int fruit = 0;
+    private int energyGain = 0;
+    public GameObject enerFire = null;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,18 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump"))
         {
             jumpPressed = true;
+        }
+
+        if (Input.GetButtonDown("Vertical") && energyGain > 0)
+        {
+            //the offset 
+            Vector3 offset = new Vector3(0f, 2f, 0f);
+
+            //create a bullet pointing in its natural direction 
+            GameObject b = Instantiate(enerFire, new Vector3(0f, 0f, 0f), Quaternion.identity);
+
+            b.GetComponent<EnerFireController>().InitPosition(transform.position + offset, new Vector3(0f, 2f, 0f));
+            energyGain--;
         }
     }
 
@@ -69,6 +83,11 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Fruit")
         {
             fruit++;
+        }
+
+        if (collision.tag == "Energy")
+        {
+            energyGain++;
         }
     }
 
