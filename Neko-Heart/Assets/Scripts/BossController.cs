@@ -19,6 +19,7 @@ public class BossController : MonoBehaviour
     public Text winText;
     public bool canMove;
     public int life = 3;
+    public int attackMode = 0;
     private Animator anim;
 
     // Start is called before the first frame update
@@ -64,6 +65,10 @@ public class BossController : MonoBehaviour
             transform.position = transform.position + velocity * Time.deltaTime * speed;
         }
 
+        if(attackMode > 5)
+        {
+            attackMode = 0;
+        }
         if (life == 0)
         {
             canMove = false;
@@ -83,7 +88,7 @@ public class BossController : MonoBehaviour
 
             b.GetComponent<FireBallController>().InitPosition(transform.position + offset, new Vector3(0f, -2f, 0f));
             canFire = false;
-            
+            attackMode++;
             StartCoroutine(PlayerCanFireAgain());
             StartCoroutine(waitwalk());
 
@@ -107,7 +112,14 @@ public class BossController : MonoBehaviour
 
     IEnumerator PlayerCanFireAgain()
     {
-        yield return new WaitForSecondsRealtime(2);
+        if(attackMode < 4)
+        {
+            yield return new WaitForSecondsRealtime(2);
+        }
+        else
+        {
+            yield return new WaitForSecondsRealtime(1);
+        }
         canFire = true;
     }
 
