@@ -17,9 +17,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask ground;
 
     public Text scoreText;
+    public Text gameOver;
+    public Text energyBall;
 
     public bool isGround, isJumpping, isFalling;
     public bool jumpPressed = false;
+    public bool canFire = true;
     int jumpCount = 2;
 
     private static int totalScore = 0;
@@ -34,6 +37,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
         UpdateScoreText();
+        gameOver.text = "";
+        energyBall.text = "Energy Ball: 0";
     }
 
     // Update is called once per frame
@@ -44,7 +49,7 @@ public class PlayerController : MonoBehaviour
             jumpPressed = true;
         }
 
-        if (Input.GetButtonDown("Vertical") && energyGain > 0)
+        if (Input.GetButtonDown("Vertical") && energyGain > 0 && canFire)
         {
             //the offset 
             Vector3 offset = new Vector3(0f, 2f, 0f);
@@ -54,7 +59,18 @@ public class PlayerController : MonoBehaviour
 
             b.GetComponent<EnerFireController>().InitPosition(transform.position + offset, new Vector3(0f, 2f, 0f));
             energyGain--;
+            energyBall.text = "Energy Ball: " + energyGain;
+            canFire = false;
+            StartCoroutine(PlayerCanFireAgain());
         }
+
+        
+    }
+
+    IEnumerator PlayerCanFireAgain()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        canFire = true;
     }
 
     private void FixedUpdate()
@@ -88,6 +104,13 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Energy")
         {
             energyGain++;
+            energyBall.text = "Energy Ball: " + energyGain;
+        }
+
+        if (collision.tag == "FireBall")
+        {
+            gameOver.text = "GameOver!\nPress 'R' to restart";
+            Destroy(gameObject);
         }
     }
 

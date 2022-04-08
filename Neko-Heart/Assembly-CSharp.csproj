@@ -73,6 +73,7 @@
     <Compile Include="Assets\PC2D\Scripts\PlatformerMotor2D.cs" />
     <Compile Include="Assets\PC2D\Scripts\PlayerController2D.cs" />
     <Compile Include="Assets\Scripts\BossController.cs" />
+    <Compile Include="Assets\Scripts\BossLevelContorl.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\EnerFireController.cs" />
     <Compile Include="Assets\Scripts\EnergyController.cs" />
